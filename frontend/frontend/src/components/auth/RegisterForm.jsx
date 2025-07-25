@@ -1,66 +1,32 @@
+// src/components/auth/RegisterForm.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('');
-  const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
-  
 
-  const handleSubmit = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-
-   
-
-   
-    console.log('Register:', { email, fullName, password });
+    try {
+      await axios.post('http://127.0.0.1:8000/api/auth/register/', {
+        email,
+        password,
+      });
+      alert('Registration successful!');
+    } catch (error) {
+      alert('Registration failed');
+    }
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: '500px' }}>
+    <div className="container mt-5" style={{ maxWidth: 400 }}>
       <h2 className="mb-4 text-center">Register</h2>
-      <form onSubmit={handleSubmit}>
-
-        <div className="mb-3">
-          <label htmlFor="fullName" className="form-label">Full Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="fullName"
-            placeholder="Enter your full name"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-       
-
+      <form onSubmit={handleRegister}>
+        <input type="email" className="form-control mb-2" placeholder="Email"
+          value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <input type="password" className="form-control mb-3" placeholder="Password"
+          value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit" className="btn btn-success w-100">Register</button>
       </form>
     </div>

@@ -1,29 +1,26 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// src/App.jsx
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginForm from './components/auth/LoginForm';
 import RegisterForm from './components/auth/RegisterForm';
+import AdminDashboard from './components/admin/AdminDashboard';
+import ProductManagement from './components/admin/ProductManagement';
+import UserDashboard from './components/user/UserDashboard';
+import OrderHistory from './components/user/OrderHistory';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>hhhh</h1>} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegisterForm />} />
+   <BrowserRouter>
 
-          {/* Protected Admin Routes */}
-        {/* <Route path="/admin/*" element={<AdminLayout />}>
-          <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="products" element={<AdminProducts />} />
-        </Route> */}
-
-        {/* Protected User Routes */}
-        {/* <Route path="/user/*" element={<UserLayout />}>
-          <Route path="dashboard" element={<UserDashboard />} />
-          <Route path="orders" element={<UserOrders />} />
-        </Route> */}
-
-      </Routes>
-    </BrowserRouter>
+<Routes>
+      <Route path="/" element={<Navigate to="/login" />} />
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/register" element={<RegisterForm />} />
+      <Route path="/user-dashboard" element={<UserDashboard />} />
+      <Route path="/order-history" element={<OrderHistory />} />
+      <Route path="/admin-dashboard" element={<AdminDashboard />} />
+      <Route path="/product-management" element={<ProductManagement />} />
+    </Routes>
+   </BrowserRouter>
   );
 }
 

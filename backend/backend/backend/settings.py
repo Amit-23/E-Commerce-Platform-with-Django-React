@@ -31,6 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users',
+    'products',
+    'orders',
+    'notifications',
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
