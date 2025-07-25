@@ -3,6 +3,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import User, UserProfile
 from .serializers import RegisterSerializer, UserProfileSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import CustomTokenObtainPairSerializer
+
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = CustomTokenObtainPairSerializer
 
 
 class RegisterView(generics.CreateAPIView):

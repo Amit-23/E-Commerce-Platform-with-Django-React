@@ -1,7 +1,8 @@
-// src/components/auth/LoginForm.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -15,11 +16,30 @@ const LoginForm = () => {
         email,
         password,
       });
-      localStorage.setItem('access', res.data.access);
-      localStorage.setItem('refresh', res.data.refresh);
+
+      const accessToken = res.data.access;
+      const refreshToken = res.data.refresh;
+
+      // Store tokens
+      localStorage.setItem('access', accessToken);
+      localStorage.setItem('refresh', refreshToken);
+
+      // Decode the token
+      const decoded = jwtDecode(accessToken);
+      console.log('Decoded token:', decoded);
+
+      // Check if user is admin
+      const isAdmin = decoded.is_staff || decoded.is_superuser;
+
       alert('Login successful!');
-      navigate('/user-dashboard'); // or '/admin-dashboard' after checking user type
+
+      if (isAdmin) {
+        navigate('/admin-dashboard');
+      } else {
+        navigate('/user-dashboard');
+      }
     } catch (err) {
+      console.error(err);
       alert('Login failed!');
     }
   };
