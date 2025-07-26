@@ -1,17 +1,19 @@
 // src/components/admin/AdminDashboard.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NotificationBell from '../NotificationBell';
 
 const AdminDashboard = () => {
   return (
     <>
-      <div className="container mt-4">
-        <div className="d-flex justify-content-end">
-          <Link to="/logout" className="btn btn-danger">
-            Logout
-          </Link>
-        </div>
+      <div className="d-flex justify-content-between align-items-center mt-2 ms-3">
+        <Link to="/logout" className="btn btn-danger">
+          Logout
+        </Link>
+        <NotificationBell />
+      </div>
 
+      <div className="container mt-4">
         <h2 className="mt-4">Admin Dashboard</h2>
         <p>Welcome admin! You can manage products, categories, and orders.</p>
 

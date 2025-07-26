@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import API from '../../axiosInstance';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBoxOpen } from 'react-icons/fa'; // Optional: Order icon
+import NotificationBell from '../NotificationBell';
 
 const UserDashboard = () => {
   const [profile, setProfile] = useState(null);
@@ -91,6 +92,13 @@ const UserDashboard = () => {
             Logout
           </Link>
         </div>
+      </div>
+
+      <div className="d-flex justify-content-between align-items-center mt-2 ms-3">
+        <Link to="/logout" className="btn btn-danger">
+          Logout
+        </Link>
+        <NotificationBell />
       </div>
 
       <div className="container mt-4">
