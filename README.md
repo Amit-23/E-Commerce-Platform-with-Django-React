@@ -310,24 +310,9 @@ DATABASE_URL=postgresql://user:password@localhost:5432/enlog_db
    - Ensure CORS headers are properly configured
    - Check frontend URL in CORS settings
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit changes: `git commit -am 'Add feature'`
-4. Push to branch: `git push origin feature-name`
-5. Submit a pull request
+## 👥 Author
 
-## 📝 License
+- **Amit Singh**
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👥 Authors
-
-- **Your Name** - Initial work
-
-## 🙏 Acknowledgments
-
-- Django REST Framework for the excellent API framework
-- React team for the amazing frontend library
-- Bootstrap for the responsive UI components
