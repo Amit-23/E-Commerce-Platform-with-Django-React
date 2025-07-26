@@ -19,8 +19,11 @@ const AdminDashboard = () => {
           <Link to="/admin/add-product" className="btn btn-success me-3">
             ➕ Add Product
           </Link>
-          <Link to="/admin/add-category" className="btn btn-primary">
+          <Link to="/admin/add-category" className="btn btn-primary me-3">
             ➕ Add Category
+          </Link>
+          <Link to="/admin/orders" className="btn btn-warning">
+            📦 Manage Orders
           </Link>
         </div>
       </div>

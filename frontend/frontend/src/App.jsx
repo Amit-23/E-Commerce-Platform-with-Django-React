@@ -4,6 +4,7 @@ import LoginForm from './components/auth/LoginForm';
 import RegisterForm from './components/auth/RegisterForm';
 import AdminDashboard from './components/admin/AdminDashboard';
 import ProductManagement from './components/admin/ProductManagement';
+import OrderManagement from './components/admin/OrderManagement';
 import UserDashboard from './components/user/UserDashboard';
 import OrderHistory from './components/user/OrderHistory';
 import Logout from './components/auth/Logout';
@@ -22,6 +23,7 @@ function App() {
       <Route path="/order-history" element={<OrderHistory />} />
       <Route path="/admin-dashboard" element={<AdminDashboard />} />
       <Route path="/product-management" element={<ProductManagement />} />
+      <Route path="/admin/orders" element={<OrderManagement />} />
       <Route path="/admin/add-product" element={<AddProduct />} />
       <Route path="/admin/add-category" element={<AddCategory />} />
       <Route path='/logout' element={<Logout />} />

@@ -1,6 +1,6 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
-from .views import RegisterView, UserDashboardView, AdminDashboardView
+from .views import RegisterView, UserDashboardView, AdminDashboardView, AdminOrdersView
 from .views import CustomTokenObtainPairView
 
 
@@ -10,4 +10,6 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('dashboard/', UserDashboardView.as_view(), name='user_dashboard'),
     path('admin-dashboard/', AdminDashboardView.as_view(), name='admin_dashboard'),
+    path('admin-orders/', AdminOrdersView.as_view(), name='admin_orders'),
+    path('admin-orders/<int:order_id>/', AdminOrdersView.as_view(), name='admin_order_detail'),
 ]
