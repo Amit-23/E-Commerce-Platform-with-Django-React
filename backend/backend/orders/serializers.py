@@ -8,12 +8,20 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
-        read_only_fields = ['user', 'total_price', 'status']
+        read_only_fields = ['user', 'total_price']
 
     def create(self, validated_data):
-        user = self.context['request'].user
         products = validated_data.pop('products')
         total_price = sum(p.price for p in products)
-        order = Order.objects.create(user=user, total_price=total_price, **validated_data)
+        order = Order.objects.create(total_price=total_price, **validated_data)
         order.products.set(products)
         return order
+
+    def update(self, instance, validated_data):
+        request = self.context.get('request')
+        if request and request.user.is_staff:
+            # Allow admin to update status
+            status = validated_data.get('status', instance.status)
+            instance.status = status
+        # Allow updating other fields if needed (add more logic if required)
+        return super().update(instance, validated_data)
