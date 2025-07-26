@@ -117,7 +117,7 @@ enlog/
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone "https://github.com/Amit-23/E-Commerce-Platform-with-Django-React/tree/main"
    cd enlog
    ```
 
